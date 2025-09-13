@@ -12,27 +12,26 @@
 //	对于每组数据输出一行字符串，如果某只成功破坏了队形，则输出”showshowshow”; 否则输出”forever love”.
 
 
-//#include<iostream>
-//using namespace std;
+
+//#include<stdio.h>
+//
 //int main()
 //{
 //	int T;
-//	cin >> T;
+//	scanf_s("%d", &T);
 //	int temp = 0;
-//	for (int i=0; i < T; i++)
+//	for (int i = 0; i < T; i++)
 //	{
-//		cin >> temp;
+//		scanf_s("%d", &temp);
 //		if (temp % 3 == 1)
 //		{
-//			cout << "showshowshow\n";
+//			printf("showshowshow\n");
 //		}
 //		else
 //		{
-//			cout << "forever love\n";
+//			printf("forever love\n");
 //		}
 //	}
-//	
+//
 //	return 0;
 //}
-
-
