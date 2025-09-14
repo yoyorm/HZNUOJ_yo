@@ -42,5 +42,11 @@
     <ClCompile Include="TEMPCPP.cpp">
       <Filter>源文件\entrance</Filter>
     </ClCompile>
+    <ClCompile Include="2359.c">
+      <Filter>源文件\entrance</Filter>
+    </ClCompile>
+    <ClCompile Include="1940.c">
+      <Filter>源文件\entrance</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

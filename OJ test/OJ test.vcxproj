@@ -127,8 +127,10 @@
     <ClCompile Include="1930.c" />
     <ClCompile Include="1938.c" />
     <ClCompile Include="1939.c" />
+    <ClCompile Include="1940.c" />
     <ClCompile Include="1953.c" />
     <ClCompile Include="1953.cpp" />
+    <ClCompile Include="2359.c" />
     <ClCompile Include="TEMP.c" />
     <ClCompile Include="TEMPCPP.cpp" />
   </ItemGroup>
