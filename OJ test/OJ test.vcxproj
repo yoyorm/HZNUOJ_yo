@@ -130,7 +130,9 @@
     <ClCompile Include="1940.c" />
     <ClCompile Include="1953.c" />
     <ClCompile Include="1953.cpp" />
+    <ClCompile Include="2317.c" />
     <ClCompile Include="2359.c" />
+    <ClCompile Include="2387 苏轼寻宝.c" />
     <ClCompile Include="TEMP.c" />
     <ClCompile Include="TEMPCPP.cpp" />
   </ItemGroup>

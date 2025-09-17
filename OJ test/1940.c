@@ -28,13 +28,11 @@
 //0
 //50
 
-
-//此代码wrong answer未解决！！
+//暴力求解法
 //#include<stdio.h>
 //int main()
 //{
 //	int T;
-//	int data[100];
 //	scanf_s("%d", &T);
 //	{
 //		for (int i = 0; i < T; i++)
@@ -49,14 +47,11 @@
 //					{
 //						if (a * 150 + b * 200 + c * 350 > max)
 //							max = a * 150 + b * 200 + c * 350;
+//
 //					}
 //				}
 //			}
-//			data[i] = temp - max;
-//		}
-//		for (int k = 0; k < T; k++)
-//		{
-//			printf("%d\n", data[k]);
+//			printf("%d\n", temp - max);
 //		}
 //
 //	}
