@@ -24,9 +24,6 @@
     <ClCompile Include="1953.cpp">
       <Filter>源文件\entrance</Filter>
     </ClCompile>
-    <ClCompile Include="1930.c">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="TEMP.c">
       <Filter>源文件\entrance</Filter>
     </ClCompile>
@@ -52,6 +49,15 @@
       <Filter>源文件\entrance</Filter>
     </ClCompile>
     <ClCompile Include="2387 苏轼寻宝.c">
+      <Filter>源文件\entrance</Filter>
+    </ClCompile>
+    <ClCompile Include="1954节奏大师.c">
+      <Filter>源文件\entrance</Filter>
+    </ClCompile>
+    <ClCompile Include="1930.c">
+      <Filter>源文件\entrance</Filter>
+    </ClCompile>
+    <ClCompile Include="1959三角形.c">
       <Filter>源文件\entrance</Filter>
     </ClCompile>
   </ItemGroup>
