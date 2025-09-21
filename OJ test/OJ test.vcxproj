@@ -128,10 +128,12 @@
     <ClCompile Include="1938.c" />
     <ClCompile Include="1939.c" />
     <ClCompile Include="1940.c" />
+    <ClCompile Include="1952Lucky Sum of Digits.c" />
     <ClCompile Include="1953.c" />
     <ClCompile Include="1953.cpp" />
     <ClCompile Include="1954节奏大师.c" />
     <ClCompile Include="1959三角形.c" />
+    <ClCompile Include="1962循环数字图像.c" />
     <ClCompile Include="2317.c" />
     <ClCompile Include="2359.c" />
     <ClCompile Include="2387 苏轼寻宝.c" />

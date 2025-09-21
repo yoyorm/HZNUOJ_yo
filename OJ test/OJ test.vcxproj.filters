@@ -60,5 +60,11 @@
     <ClCompile Include="1959三角形.c">
       <Filter>源文件\entrance</Filter>
     </ClCompile>
+    <ClCompile Include="1952Lucky Sum of Digits.c">
+      <Filter>源文件\entrance</Filter>
+    </ClCompile>
+    <ClCompile Include="1962循环数字图像.c">
+      <Filter>源文件\entrance</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
