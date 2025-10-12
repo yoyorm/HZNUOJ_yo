@@ -1,26 +1,35 @@
 #include <stdio.h>
-void fun0();
-void fun1();
-void fun2();
+void change(int *a[3][3]);
 int main()
 {
-	int a;
-	while (scanf("%d", &a) != EOF)
+	int *data[3][3];
+	for (int i = 0; i < 3; i++)
 	{
-		void (*ptr[3])(void) = {fun0, fun1, fun2};
-		ptr[a - 1]();
+		for (int j = 0; j < 3; j++)
+		{
+			scanf("%d", &data[i][j]);
+		}
 	}
+	change(data);
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			printf("%d ", data[i][j]);
+		}
+		printf("\n");
+	}
+	return 0;
 }
 
-void fun0()
+void change(int *a[3][3])
 {
-	printf("这是1号函数的打印输出。\n");
-}
-void fun1()
-{
-	printf("这是2号函数的打印输出。\n");
-}
-void fun2()
-{
-	printf("这是3号函数的打印输出。\n");
+	int* b[3][3]= a;
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			a[i][j] = b[i][j];
+		}
+	}
 }
