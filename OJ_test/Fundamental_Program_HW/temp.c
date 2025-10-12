@@ -1,30 +1,26 @@
 #include <stdio.h>
+void fun0();
+void fun1();
+void fun2();
 int main()
 {
-	float data[3];
-	while (scanf("%f%f%f", &data[0], &data[1], &data[2]) == 3)
+	int a;
+	while (scanf("%d", &a) != EOF)
 	{
-		for (int i = 0; i < 3; i++)
-		{
-			int label = 0;
-			float Min = 190;
-			for (int k = 0; k < 3; k++)
-			{
-				if (data[k] != -1)
-				{
-					if (data[k] < Min)
-					{
-						Min = data[k];
-						label = k;
-					}
-				}
-			}
-			data[label] = -1;
-			if (i < 2)
-				printf("%.1f ", Min);
-			else
-				printf("%.1f\n", Min);
-		}
+		void (*ptr[3])(void) = {fun0, fun1, fun2};
+		ptr[a - 1]();
 	}
-	return 0;
+}
+
+void fun0()
+{
+	printf("这是1号函数的打印输出。\n");
+}
+void fun1()
+{
+	printf("这是2号函数的打印输出。\n");
+}
+void fun2()
+{
+	printf("这是3号函数的打印输出。\n");
 }
