@@ -1,35 +1,26 @@
 #include <stdio.h>
-void change(int *a[3][3]);
 int main()
 {
-	int *data[3][3];
-	for (int i = 0; i < 3; i++)
+	int T;
+
+	while (scanf("%d", &T) != EOF)
 	{
-		for (int j = 0; j < 3; j++)
+		int data[100];
+		for (int i = 0; i < T; i++)
 		{
-			scanf("%d", &data[i][j]);
+			scanf("%d", &data[i]);
 		}
-	}
-	change(data);
-	for (int i = 0; i < 3; i++)
-	{
-		for (int j = 0; j < 3; j++)
+		for (int i = T - 1; i >= 0; i--)
 		{
-			printf("%d ", data[i][j]);
+			if (i != 0)
+			{
+				printf("%d ", data[i]);
+			}
+			else
+			{
+				printf("%d\n", data[i]);
+			}
 		}
-		printf("\n");
 	}
 	return 0;
-}
-
-void change(int *a[3][3])
-{
-	int* b[3][3]= a;
-	for (int i = 0; i < 3; i++)
-	{
-		for (int j = 0; j < 3; j++)
-		{
-			a[i][j] = b[i][j];
-		}
-	}
 }
