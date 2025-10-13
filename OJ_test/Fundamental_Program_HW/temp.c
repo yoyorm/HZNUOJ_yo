@@ -1,35 +1,24 @@
 #include <stdio.h>
-void change(int *a[3][3]);
+#include <string.h>
+void showName(char x[]);
 int main()
 {
-	int *data[3][3];
-	for (int i = 0; i < 3; i++)
+	int c;
+	char file[10];
+	file[9] = '\0';
+	while ((c = getchar()) != '.'&& c != EOF )
 	{
-		for (int j = 0; j < 3; j++)
-		{
-			scanf("%d", &data[i][j]);
-		}
 	}
-	change(data);
-	for (int i = 0; i < 3; i++)
-	{
-		for (int j = 0; j < 3; j++)
-		{
-			printf("%d ", data[i][j]);
-		}
-		printf("\n");
-	}
-	return 0;
+	scanf("%s", &file);
+	showName(file);
 }
 
-void change(int *a[3][3])
+void showName(char x[])
 {
-	int* b[3][3]= a;
-	for (int i = 0; i < 3; i++)
-	{
-		for (int j = 0; j < 3; j++)
-		{
-			a[i][j] = b[i][j];
-		}
-	}
+	if (strcmp(x, "doc") == 0)
+		printf("Word\n");
+	if (strcmp(x, "xls") == 0)
+		printf("Excel\n");
+	if (strcmp(x, "ppt") == 0)
+		printf("PowerPoint\n");
 }
