@@ -1,4 +1,5 @@
 #include <stdio.h>
+<<<<<<< HEAD
 #include <string.h>
 void showName(char x[]);
 int main()
@@ -21,4 +22,30 @@ void showName(char x[])
 		printf("Excel\n");
 	if (strcmp(x, "ppt") == 0)
 		printf("PowerPoint\n");
+=======
+int main()
+{
+	int T;
+
+	while (scanf("%d", &T) != EOF)
+	{
+		int data[100];
+		for (int i = 0; i < T; i++)
+		{
+			scanf("%d", &data[i]);
+		}
+		for (int i = T - 1; i >= 0; i--)
+		{
+			if (i != 0)
+			{
+				printf("%d ", data[i]);
+			}
+			else
+			{
+				printf("%d\n", data[i]);
+			}
+		}
+	}
+	return 0;
+>>>>>>> 27f5a2047527a3ee21df3d2e99ebd48d6a676167
 }
