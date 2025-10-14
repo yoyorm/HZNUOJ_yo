@@ -1,42 +1,38 @@
 #include <stdio.h>
-<<<<<<< HEAD
-#include <string.h>
-void showName(char x[]);
-int main()
-{
-	int c;
-	char file[10];
-	file[9] = '\0';
-	while ((c = getchar()) != '.'&& c != EOF )
-	{
-	}
-	scanf("%s", &file);
-	showName(file);
-}
-
-void showName(char x[])
-{
-	if (strcmp(x, "doc") == 0)
-		printf("Word\n");
-	if (strcmp(x, "xls") == 0)
-		printf("Excel\n");
-	if (strcmp(x, "ppt") == 0)
-		printf("PowerPoint\n");
-=======
+#include <stdlib.h>
+#include <math.h>
 int main()
 {
 	int T;
-
-	while (scanf("%d", &T) != EOF)
+	while (scanf("%d", &T) == 1)
 	{
-		int data[100];
+		int *data = (int *)malloc(sizeof(int) * T);
 		for (int i = 0; i < T; i++)
 		{
 			scanf("%d", &data[i]);
 		}
-		for (int i = T - 1; i >= 0; i--)
+		int change = 1;
+		for (int i = 0; i < T; i++)
 		{
-			if (i != 0)
+			if (change == 0)
+			{
+				break;
+			}
+			change = 0;
+			for (int *p = data; p < data + T - 1; p++) // 多减一防止访问越界
+			{
+				if (abs(*p) > abs(*(p + 1)))
+				{
+					int temp = *p;
+					*p = *(p + 1);
+					*(p + 1) = temp;
+					change++;
+				}
+			}
+		}
+		for (int i = 0; i < T; i++)
+		{
+			if (i < T - 1)
 			{
 				printf("%d ", data[i]);
 			}
@@ -45,7 +41,6 @@ int main()
 				printf("%d\n", data[i]);
 			}
 		}
+		printf("\n");
 	}
-	return 0;
->>>>>>> 27f5a2047527a3ee21df3d2e99ebd48d6a676167
 }
