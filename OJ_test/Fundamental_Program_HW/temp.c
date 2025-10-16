@@ -1,28 +1,60 @@
 #include <stdio.h>
+#include <string.h>
+void print(char *num, int length);
+
 int main()
 {
-    int data[4][4];
-    int pos[2];
-    for (int i = 0; i < 4; i++)
+    int T;
+    scanf("%d", &T);
+    getchar();
+    while (T--)
     {
-        for (int j = 0; j < 4; j++)
-        {
-            scanf("%d", &data[i][j]);
-        }
+        char num[22];
+        fgets(num, 22, stdin);
+        int len = strlen(num);
+        print(num, len);
+        printf("\n");
     }
-    int Min = data[0][0];
-    for (int i = 0; i < 4; i++)
-    {
-        for (int j = 0; j < 4; j++)
-        {
-            if (data[i][j] < Min)
-            {
-                Min = data[i][j];
-                pos[0] = i;
-                pos[1] = j;
-            }
-        }
-    }
-    printf("%d %d", pos[0], pos[1]);
+
     return 0;
+}
+
+void print(char *num, int length)
+{
+    for (int i = 0; i < length; i++)
+    {
+        switch (num[i])
+        {
+        case '0':
+            printf("zero ");
+            break;
+        case '1':
+            printf("one ");
+            break;
+        case '2':
+            printf("two ");
+            break;
+        case '3':
+            printf("three ");
+            break;
+        case '4':
+            printf("four ");
+            break;
+        case '5':
+            printf("five ");
+            break;
+        case '6':
+            printf("six ");
+            break;
+        case '7':
+            printf("seven ");
+            break;
+        case '8':
+            printf("eight ");
+            break;
+        case '9':
+            printf("nine ");
+            break;
+        }
+    }
 }
