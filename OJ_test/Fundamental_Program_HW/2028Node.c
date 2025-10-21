@@ -25,6 +25,7 @@
 #include <stdlib.h>
 
 struct Node
+// 链表结构
 {
     long long id;
     struct Node *next;
@@ -40,7 +41,9 @@ int main()
     while (scanf("%d%d", &n, &m) != EOF)
     {
         struct Node *head = NULL;
+        // 创建列表
         inputNode(&head, n);
+        // 使用&来传递**Node类型，只有这样才可以修改链表头节点，否则智能修改内容
         while (m--)
         {
             insertNode(&head);
@@ -62,11 +65,14 @@ void inputNode(struct Node **head, int num)
         {
             *head = temp;
             tail = temp;
+            // 如果是链表头，就直接初始化为头尾
         }
         else
         {
             tail->next = temp;
+            // 将上一个尾部的next指针指向新节点
             tail = temp;
+            // 把新节点赋给尾部
         }
     }
 }
@@ -76,27 +82,31 @@ void insertNode(struct Node **head)
     long long idto, findid;
     scanf("%lld %lld", &idto, &findid);
     struct Node *pre = NULL;
+    // 用于修改前一个链表的next和判断链表头
     struct Node *cur = *head;
+    // 创建临时指针用于遍历链表（防止修改原链表）
     while (cur != NULL)
     {
         if ((cur)->id == findid)
         {
             if (pre == NULL)
             {
-                struct Node *temp = cur;
+                // 如果插入位置是链表头，就创建一个新的链表，并且赋值之后赋给链表头
                 struct Node *newhead = (struct Node *)malloc(sizeof(struct Node));
                 newhead->id = idto;
-                newhead->next = temp;
+                newhead->next = cur;
                 *head = newhead;
             }
             else
             {
+                // 中间位置就创建一个新的链表，修改前一个链表与当前的next连接前后节点
                 struct Node *newhead = (struct Node *)malloc(sizeof(struct Node));
                 newhead->id = idto;
                 newhead->next = (cur);
                 pre->next = newhead;
             }
             return;
+            // 找到插入之后就立刻结束
         }
         pre = cur;
         cur = (cur)->next;
@@ -109,6 +119,7 @@ void printNode(struct Node *head)
     {
         printf("%lld ", temp->id);
         temp = temp->next;
+        // 通过临时指针遍历链表
     }
     printf("\n");
 }
