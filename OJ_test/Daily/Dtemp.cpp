@@ -1,24 +1,29 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
+bool isPowerOfTwo(long long num);
 
 int main()
 {
-    int N;
-    cin >> N;
-    int one = 0;
-    int temp;
-    for (int i = 0; i < N; i++)
+    long long num;
+    while (cin >> num)
     {
-        cin >> temp;
-        if (temp == 1)
-            one++;
+        if (num >= 1 && (num == 1 || isPowerOfTwo(num) || num % 1024 == 0))
+            cout << "YES" << endl;
+        else
+            cout << "NO" << endl;
     }
-    if (one == 0)
+    return 0;
+}
+
+bool isPowerOfTwo(long long num)
+{
+
+    if (num <= 0) return false;
+    while (num > 1)
     {
-        cout << "NO";
+        if (num % 2 != 0)
+            return false;
+        num /= 2;
     }
-    else
-    {
-        cout << "YES";
-    }
+    return true;
 }
