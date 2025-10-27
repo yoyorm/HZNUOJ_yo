@@ -1,29 +1,54 @@
-#include<iostream>
+#include <iostream>
+#include <map>
+#include <string>
+#include <cctype>
+
 using namespace std;
-bool isPowerOfTwo(long long num);
 
 int main()
 {
-    long long num;
+    int num;
+    bool first = true;
     while (cin >> num)
     {
-        if (num >= 1 && (num == 1 || isPowerOfTwo(num) || num % 1024 == 0))
-            cout << "YES" << endl;
+        if (!first)
+            cout << endl;
         else
-            cout << "NO" << endl;
+            first = false;
+        string line;
+        map<string, int> words;
+        while (getline(cin, line) && line != "EndOfText")
+        {
+            string word = "";
+            for (int i = 0; i < line.size(); i++)
+            {
+                if (isalpha(line[i]))
+                    word += tolower(line[i]);
+                else
+                {
+                    if (!word.empty())
+                    {
+                        words[word]++;
+                        word = "";
+                    }
+                }
+            }
+            if (!word.empty())
+            {
+                words[word]++;
+                word = "";
+            }
+        }
+        bool find = false;
+        for (const auto &[name, n] : words)
+        {
+            if (n == num)
+            {
+                cout << name << endl;
+                find = true;
+            }
+        }
+        if (!find)
+            cout << "There are no such word." << endl;
     }
-    return 0;
-}
-
-bool isPowerOfTwo(long long num)
-{
-
-    if (num <= 0) return false;
-    while (num > 1)
-    {
-        if (num % 2 != 0)
-            return false;
-        num /= 2;
-    }
-    return true;
 }
