@@ -1,54 +1,33 @@
 #include <iostream>
-#include <map>
 #include <string>
-#include <cctype>
-
+#include <map>
 using namespace std;
 
 int main()
 {
-    int num;
-    bool first = true;
-    while (cin >> num)
+    int T;
+    cin >> T;
+    while (T--)
     {
-        if (!first)
-            cout << endl;
-        else
-            first = false;
-        string line;
-        map<string, int> words;
-        while (getline(cin, line) && line != "EndOfText")
+        int num;
+        cin >> num;
+        map<string, int> stu;
+        while (num--)
         {
-            string word = "";
-            for (int i = 0; i < line.size(); i++)
-            {
-                if (isalpha(line[i]))
-                    word += tolower(line[i]);
-                else
-                {
-                    if (!word.empty())
-                    {
-                        words[word]++;
-                        word = "";
-                    }
-                }
-            }
-            if (!word.empty())
-            {
-                words[word]++;
-                word = "";
-            }
+            string name;
+            int score;
+            cin >> name >> score;
+            stu[name] = score;
         }
-        bool find = false;
-        for (const auto &[name, n] : words)
+        cin >> num;
+        while (num--)
         {
-            if (n == num)
-            {
-                cout << name << endl;
-                find = true;
-            }
+            string name;
+            cin >> name;
+            if (stu.count(name))
+                cout << stu[name] << endl;
+            else
+                cout << "error" << endl;
         }
-        if (!find)
-            cout << "There are no such word." << endl;
     }
 }
