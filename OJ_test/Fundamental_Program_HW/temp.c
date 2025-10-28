@@ -1,16 +1,35 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 int main()
 {
-    int num;
-    scanf("%d", &num);
-    for(int i=0;i<num;i++)
+    int T;
+    scanf("%d", &T);
+    while (T--)
     {
-        if(i==0)
+        int num;
+        scanf("%d", &num);
+        int *arr = (int *)malloc(sizeof(int) * num);
+        for (int i = 0; i < num; i++)
         {
-            printf("   +---+\n  /     \\\n +       +\n  \\     /\n   +---+\n");
+            scanf("%d", &arr[i]);
         }
-        else{
-            printf("  /     \\\n +       +\n  \\     /\n   +---+\n");
+        for (int i = 0; i < num; i++)
+        {
+            int count = 0;
+            while (!(arr[i] & 1))
+            {
+                count++;
+                arr[i] = arr[i] >> 1;
+            }
+            if (i != num - 1)
+            {
+                printf("%d ", (int)pow(2, count));
+            }
+            else
+            {
+                printf("%d\n", (int)pow(2, count));
+            }
         }
     }
 }
