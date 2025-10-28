@@ -1,6 +1,16 @@
-#include<stdio.h>
+#include <stdio.h>
 int main()
 {
-    printf("hello");
-
+    int num;
+    scanf("%d", &num);
+    for(int i=0;i<num;i++)
+    {
+        if(i==0)
+        {
+            printf("   +---+\n  /     \\\n +       +\n  \\     /\n   +---+\n");
+        }
+        else{
+            printf("  /     \\\n +       +\n  \\     /\n   +---+\n");
+        }
+    }
 }
