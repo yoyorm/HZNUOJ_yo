@@ -1,33 +1,17 @@
 #include <iostream>
-#include <string>
-#include <map>
 using namespace std;
 
 int main()
 {
-    int T;
-    cin >> T;
-    while (T--)
+    int k;
+    cin >> k;
+    double sum = 0.0;
+    long long n = 0;
+    while (sum <= k)
     {
-        int num;
-        cin >> num;
-        map<string, int> stu;
-        while (num--)
-        {
-            string name;
-            int score;
-            cin >> name >> score;
-            stu[name] = score;
-        }
-        cin >> num;
-        while (num--)
-        {
-            string name;
-            cin >> name;
-            if (stu.count(name))
-                cout << stu[name] << endl;
-            else
-                cout << "error" << endl;
-        }
+        ++n;
+        sum += 1.0 / n;
     }
+    cout << n << endl;
+    return 0;
 }
