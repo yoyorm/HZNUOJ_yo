@@ -1,17 +1,22 @@
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 int main()
 {
-    int k;
-    cin >> k;
-    double sum = 0.0;
-    long long n = 0;
-    while (sum <= k)
+    int all, num;
+    cin >> all >> num;
+    int *a = new int[all];
+    for (int i = 0; i < all; i++)
     {
-        ++n;
-        sum += 1.0 / n;
+        cin >> a[i];
     }
-    cout << n << endl;
-    return 0;
+    sort(a, a + all,greater<int>());
+    int sum = 0;
+    for (int i = 0; i < num; i++)
+    {
+        sum += a[i];
+    }
+    double ans = sum / 1000.0;
+    printf("%.2f", ans);
 }
