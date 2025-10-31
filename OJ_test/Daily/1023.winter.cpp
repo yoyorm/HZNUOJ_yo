@@ -40,12 +40,14 @@ int main()
     while (cin >> n >> m)
     {
         vector<vector<int>> map(n + 2, vector<int>(n + 2));
+        //使用二维数组的两个下标表示从a到b，值为距离
         for (int i = 0; i < n + 2; i++)
         {
             for (int j = 0; j < n + 2; j++)
             {
                 if (i == j)
                     map[i][j] = 0;
+                    //自己到自己的距离为0
                 else
                 {
                     map[i][j] = INF;
@@ -65,11 +67,12 @@ int main()
         // 每次i到j都把所有点当作桥试一次，看看会不会更短
         {
             for (int i = 1; i <= n; i++)
+            //循环 便利每一个点到所有点的可能距离
             {
                 for (int j = 1; j <= n; j++)
                 {
                     if (map[i][j] > map[i][k] + map[k][j])
-                    // 只要可以通过走其他路径来缩短距离就把路径更新
+                    // 只要可以通过走其他路径来缩短距离，就把路径更新
                     {
                         map[i][j] = map[i][k] + map[k][j];
                     }
@@ -79,6 +82,7 @@ int main()
         int x, y;
         cin >> x >> y;
         if (map[x][y] == INF)
+        //最短距离没有更新过，还是默认的无穷大就是走不通
         {
             cout << "No path" << endl;
         }

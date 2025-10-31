@@ -36,19 +36,24 @@ int main()
         double s = a * b;
         double dH = -1;
         while (C > 0 && dH > 0.00001 || dH == -1)
+        //循环计算一直到水面上升的量很小了就结束
         {
+            //把放入过程拆分成，放入和上涨两个过程
             double dC;
             if (dH == -1)
             {
                 dH = h;
+                //初始化一下dh
             }
             if (C > dH)
             {
 
                 dC = dH;
+                //不能完全放进去
             }
             else
             {
+                //可以完全放进去，就直接算完增加量结束
                 dC = C;
                 V += dC * s;
                 break;
@@ -56,6 +61,7 @@ int main()
             C -= dC;
             V += dC * s;
             dH = dC * s / S;
+            //没完全放进去就要算上涨，然后继续计算“之前漏在水外面的部分”放入的效果
         }
         h = V / S;
         printf("%.2lf\n", h);

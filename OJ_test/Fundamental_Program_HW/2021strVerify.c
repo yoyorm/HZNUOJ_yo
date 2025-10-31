@@ -33,6 +33,7 @@ int main()
         scanf("%d %d", &sentenceNum, &verifyNum);
         getchar();
         char **sentence = (char **)malloc(sentenceNum * sizeof(char *));
+        // 创建一个“二维字符数组”，其实就是一个字符串的数组，用来把所有词存起来
         for (int i = 0; i < sentenceNum; i++)
         {
             sentence[i] = (char *)malloc(10000 * sizeof(char));
@@ -42,6 +43,7 @@ int main()
         {
             fgets(sentence[i], 10000, stdin);
             sentence[i][strcspn(sentence[i], "\n")] = '\0';
+            // 读取到换行就是一句话，手动处理多余的换行
         }
         while (verifyNum--)
         {
@@ -50,6 +52,7 @@ int main()
             scanf("%c %d %d", &ch, &x, &y);
             getchar();
             switch (ch)
+            // 分情况调用函数操作即可
             {
             case 'A':
                 addchar(sentence, x, y);
@@ -60,11 +63,13 @@ int main()
             }
         }
         printf("%s\n", sentence[0]);
+        // 题目只要输出第一行
+
         for (int i = 0; i < sentenceNum; i++)
         {
             free(sentence[i]);
         }
-        free(sentence);
+        free(sentence); // 内存释放，没有也行
     }
     return 0;
 }
@@ -77,7 +82,9 @@ void addchar(char **sentence, int x, int y)
     int len_y = strlen(sentence[y - 1]);
     if (len_x + len_y > 9999 || len_x <= 0 || len_y <= 0)
         return;
+    // 处理意外情况，其实题目里不一定需要
     strncat(sentence[x - 1], sentence[y - 1], 9999 - len_x);
+    // 直接拼接即可
     sentence[x - 1][len_x + len_y] = '\0';
 }
 void copychar(char **sentence, int x, int y)
@@ -86,5 +93,6 @@ void copychar(char **sentence, int x, int y)
         return;
     int len_y = strlen(sentence[y - 1]);
     strncpy(sentence[x - 1], sentence[y - 1], 9999);
+    // 复制一下
     sentence[x - 1][len_y] = '\0';
 }
