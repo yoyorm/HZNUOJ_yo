@@ -1,22 +1,31 @@
 #include <iostream>
 #include <algorithm>
+#include <string>
 using namespace std;
 
 int main()
 {
-    int all, num;
-    cin >> all >> num;
-    int *a = new int[all];
-    for (int i = 0; i < all; i++)
+    int T;
+    cin >> T;
+    while (T--)
     {
-        cin >> a[i];
+        string s;
+        cin >> s;
+        sort(s.begin(), s.end());
+        int count = 0;
+        do
+        {
+            if (count == 0)
+            {
+                cout << s;
+                count++;
+            }
+            else
+            {
+                cout << " " << s;
+            }
+        } while (next_permutation(s.begin(), s.end()));
+        cout << endl;
     }
-    sort(a, a + all,greater<int>());
-    int sum = 0;
-    for (int i = 0; i < num; i++)
-    {
-        sum += a[i];
-    }
-    double ans = sum / 1000.0;
-    printf("%.2f", ans);
+    return 0;
 }
