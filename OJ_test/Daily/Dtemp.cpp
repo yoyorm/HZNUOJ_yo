@@ -1,6 +1,5 @@
 #include <iostream>
-#include <algorithm>
-#include <string>
+
 using namespace std;
 
 int main()
@@ -9,23 +8,25 @@ int main()
     cin >> T;
     while (T--)
     {
-        string s;
-        cin >> s;
-        sort(s.begin(), s.end());
-        int count = 0;
-        do
-        {
-            if (count == 0)
-            {
-                cout << s;
-                count++;
-            }
-            else
-            {
-                cout << " " << s;
-            }
-        } while (next_permutation(s.begin(), s.end()));
-        cout << endl;
+        short n1, n2, n3;
+        char o1, o2;
+        cin >> n1 >> o1 >> n2 >> o2 >> n3;
     }
-    return 0;
+}
+
+int op(const char &op, int a, int b)
+{
+    switch (op)
+    {
+    case '+':
+        return a + b;
+    case '-':
+        return a - b;
+    case '*':
+        return a * b;
+    case '/':
+        return a / b;
+    case '%':
+        return a % b;
+    }
 }
