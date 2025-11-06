@@ -1,54 +1,37 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
 using namespace std;
-void sort(int *arr, int num);
+
 int main()
 {
-    short T;
-    cin >> T;
-    while (T--)
-    {
-        int num, pos;
-        cin >> num >> pos;
-        int *arr = new int[num];
-        for (int i = 0; i < num; i++)
-        {
-            cin >> arr[i];
-        }
-        sort(arr, num);
-        cout << arr[pos] << endl;
-    }
-}
+    int x;
 
-void sort(int *arr, int num)
-{
-    for (int i = 0; i < num - 1; i++)
+    while (scanf("%d", &x) != EOF)
     {
-        for (int j = 0; j < num - i - 1; j++)
+        vector<int> v(0);
+        for (int i = 1; i <= x; i++)
         {
-            if (arr[j] / 10 % 10 > arr[j + 1] / 10 % 10)
-            {
-                int temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
-            }
-            if (arr[j] / 10 % 10 == arr[j + 1] / 10 % 10)
-            {
-                if (arr[j] / 100 % 10 > arr[j + 1] / 100 % 10)
-                {
-                    int temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
-                }
-                if (arr[j] / 100 % 10 == arr[j + 1] / 100 % 10)
-                {
-                    if (arr[j] % 10 > arr[j + 1] % 10)
-                    {
-                        int temp = arr[j];
-                        arr[j] = arr[j + 1];
-                        arr[j + 1] = temp;
-                    }
-                }
-            }
+            v.push_back(i);
         }
+        sort(v.begin(), v.end());
+        do
+        {
+            for (int i = 0; i < v.size(); i++)
+            {
+                printf("%d", v[i]);
+            }
+            printf("\n");
+        } while (next_permutation(v.begin(), v.end()));
+        sort(v.begin(), v.end(), greater<int>());
+        do
+        {
+            for (int i = 0; i < v.size(); i++)
+            {
+                printf("%d", v[i]);
+            }
+            printf("\n");
+        } while (prev_permutation(v.begin(), v.end()));
+        printf("\n");
     }
 }

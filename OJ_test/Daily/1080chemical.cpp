@@ -1,3 +1,24 @@
+// 化学品问题
+//  Tags:
+// Time Limit:  1 s      Memory Limit:   128 MB
+// Submission：325     AC：52     Score：99.54
+
+  
+// Description
+
+// 一个实验室有N个放化学品的试管，排列在一条直线上。如果连续M个试管中放入药品，则会发生爆炸，于是，在某些试管中可能不放药品。
+// 任务：对于给定的N和M，求不发生爆炸的放置药品的方案总数
+
+// Input
+
+// 第一行是一个正整数L，代表输入数据的组数
+// 接下来L行，每行有两个正整数N，M( 1＜N＜32，2≤M≤5)
+
+// Output
+
+// 输出L行，每行只有一个正整数S，表示对应输入数据的方案总数。
+
+
 #include <iostream>
 using namespace std;
 
@@ -9,7 +30,7 @@ int main()
     while (T--)
     {
         cin >> N >> L;
-        long long dp[35][7] = {};
+        long long dp[35][9] = {};
         dp[0][0] = 1;
 
         for (int i = 1; i <= N; ++i)
