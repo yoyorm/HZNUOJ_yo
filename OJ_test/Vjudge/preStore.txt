@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -29,6 +30,7 @@ int main()
     }
 }
 ______________________________________________________________________________
+回文质数
 
 #include <iostream>
 #include <vector>
@@ -89,6 +91,8 @@ int main()
 
 ___________________________________________________________________________
 
+集合求和
+
 #include <iostream>
 #include <vector>
 #include<cmath>
@@ -114,3 +118,62 @@ int main()
 
 ______________________________________________________________________________
 
+猴子吃桃
+
+#include <iostream>
+#include <vector>
+#include <cmath>
+using namespace std;
+int main()
+{
+    int n;
+    cin >> n;
+    int res = 1;
+    for (int i = 1; i < n; i++)
+    {
+        res = (res + 1) * 2;
+    }
+    cout << res;
+}
+
+——————————————————————————————————————————————————————————————————————————————————
+
+培训
+
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+struct student
+{
+    string name;
+    int age;
+    double grade;
+};
+
+int main()
+{
+    int n;
+    cin >> n;
+    vector<student> students(n);
+    for (int i = 0; i < n; i++)
+    {
+        cin >> students[i].name >> students[i].age >> students[i].grade;
+    }
+    for (auto &s : students)
+    {
+        s.age++;
+        s.grade *= 1.2;
+        if (s.grade > 600)
+        {
+            s.grade = 600;
+        }
+    }
+    for (auto &s : students)
+    {
+       cout<<s.name<<" "<<s.age<<" "<<s.grade<<endl;
+    }
+    
+}
+________________________________________________________________________

@@ -1,22 +1,36 @@
 #include <iostream>
 #include <vector>
-#include<cmath>
+#include <string>
 using namespace std;
+
+struct student
+{
+    string name;
+    int age;
+    double grade;
+};
+
 int main()
 {
-    vector<int> v;
-    int temp;
-    while (cin >> temp)
+    int n;
+    cin >> n;
+    vector<student> students(n);
+    for (int i = 0; i < n; i++)
     {
-        v.push_back(temp);
+        cin >> students[i].name >> students[i].age >> students[i].grade;
     }
-    int num = v.size();
-    long long sum = 0;
-    for (int i = 0; i < num; i++)
+    for (auto &s : students)
     {
-        sum += v[i];
+        s.age++;
+        s.grade *= 1.2;
+        if (s.grade > 600)
+        {
+            s.grade = 600;
+        }
     }
-    sum=sum*pow(2,num-1);
-    cout << sum;
-
+    for (auto &s : students)
+    {
+       cout<<s.name<<" "<<s.age<<" "<<s.grade<<endl;
+    }
+    
 }
