@@ -1,3 +1,6 @@
+//https://www.luogu.com.cn/problem/P4924
+
+
 #include <iostream>
 #include <vector>
 
@@ -20,7 +23,7 @@ int main()
             tempCount++;
         }
     }
-    //printV(v);
+    // printV(v);
     while (times--)
     {
         int x, y, r, z;
@@ -81,6 +84,7 @@ void changeV(vector<vector<int>> &v, int posx, int posy, const int r, const int 
             }
         }
     }
+    // 修改回原数组
     for (int i = x - r; i <= x + r; i++)
     {
         for (int j = y - r; j <= y + r; j++)
