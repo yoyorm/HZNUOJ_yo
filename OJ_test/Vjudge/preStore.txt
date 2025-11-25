@@ -1,179 +1,261 @@
+Bookshelf B
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 int main()
 {
-    vector<bool> primes(10000, true);
-    primes[0] = false;
-    primes[1] = false;
-    for (int i = 2; i < 10000; i++)
+    int n, target;
+    cin >> n >> target;
+    vector<int> v(n);
+    for (int i = 0; i < n; i++)
     {
-        for (int j = i * i; j < 10000; j += i)
+        cin >> v[i];
+    }
+    sort(v.begin(), v.end());
+    int count = 0;
+    int res = 0;
+    for (int i = n - 1; i >= 0; i--)
+    {
+        count += v[i];
+        if (count >= target)
         {
-            primes[j] = false;
+            res++;
+            break;
         }
-    }
-    int N;
-    cin >> N;
-    for (int n = 4; n <= N; n += 2)
-    {
-        for (int i = 2; i < n; i++)
-        {
-            if (primes[i] && primes[n - i])
-            {
-                cout << n << "=" << i << "+" << n - i << endl;
-                break;
-            }
-        }
-    }
-}
-______________________________________________________________________________
-回文质数
-
-#include <iostream>
-#include <vector>
-#include <string>
-#include <cmath>
-using namespace std;
-
-bool is_huiwen(long long n)
-{
-    string s = to_string(n);
-    int len = s.size();
-    for (int i = 0; i < len / 2; i++)
-    {
-        if (s[i] != s[len - i - 1])
-        {
-            return false;
-        }
-    }
-    return true;
-}
-
-bool is_prime(long long n)
-{
-    if (n < 2)
-        return false;
-    if (n == 2 || n == 3 || n == 5 || n == 7)
-        return true;
-    if (n % 2 == 0 || n % 3 == 0 || n % 5 == 0 || n % 7 == 0)
-        return false;
-
-    long long limit = sqrt(n);
-    for (long long i = 11; i <= limit; i += 2)
-    {
-        if (n % i == 0)
-            return false;
-    }
-    return true;
-}
-
-int main()
-{
-    long long x, y;
-    cin >> x >> y;
-
-    if (x % 2 == 0)
-        x++;
-
-    for (long long i = x; i <= y; i += 2)
-    {
-        if (is_huiwen(i) && is_prime(i))
-        {
-            cout << i << endl;
-        }
-    }
-
-    return 0;
-}
-
-___________________________________________________________________________
-
-集合求和
-
-#include <iostream>
-#include <vector>
-#include<cmath>
-using namespace std;
-int main()
-{
-    vector<int> v;
-    int temp;
-    while (cin >> temp)
-    {
-        v.push_back(temp);
-    }
-    int num = v.size();
-    long long sum = 0;
-    for (int i = 0; i < num; i++)
-    {
-        sum += v[i];
-    }
-    sum=sum*pow(2,num-1);
-    cout << sum;
-
-}
-
-______________________________________________________________________________
-
-猴子吃桃
-
-#include <iostream>
-#include <vector>
-#include <cmath>
-using namespace std;
-int main()
-{
-    int n;
-    cin >> n;
-    int res = 1;
-    for (int i = 1; i < n; i++)
-    {
-        res = (res + 1) * 2;
+        res++;
     }
     cout << res;
 }
-
-——————————————————————————————————————————————————————————————————————————————————
-
-培训
+________________________________________________________
+车厢重组
 
 #include <iostream>
 #include <vector>
-#include <string>
+#include <algorithm>
 using namespace std;
-
-struct student
-{
-    string name;
-    int age;
-    double grade;
-};
 
 int main()
 {
     int n;
     cin >> n;
-    vector<student> students(n);
+    vector<int> v(n);
     for (int i = 0; i < n; i++)
     {
-        cin >> students[i].name >> students[i].age >> students[i].grade;
+        cin >> v[i];
     }
-    for (auto &s : students)
+    int count = 0;
+    for (int i = 0; i < n - 1; i++)
     {
-        s.age++;
-        s.grade *= 1.2;
-        if (s.grade > 600)
+        for (int j = 0; j < n - i - 1; j++)
         {
-            s.grade = 600;
+            if (v[j] > v[j + 1])
+            {
+                swap(v[j], v[j + 1]);
+                count++;
+            }
         }
     }
-    for (auto &s : students)
+    cout << count;
+}
+
+_______________________________________________________
+欢乐的跳
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+    int n;
+    cin >> n;
+    vector<long long> v(n);
+    for (int i = 0; i < n; i++)
     {
-       cout<<s.name<<" "<<s.age<<" "<<s.grade<<endl;
+        cin >> v[i];
+    }
+    vector<long long> minus(n - 1);
+    for (int i = 0; i < n - 1; i++)
+    {
+        minus[i] = abs(v[i + 1] - v[i]);
+    }
+    sort(minus.begin(), minus.end());
+    for (int i = 1; i <= n - 1; i++)
+    {
+        if (i != minus[i - 1])
+        {
+            cout << "Not jolly";
+            return 0;
+        }
+    }
+    cout << "Jolly";
+}
+
+_______________________________________________________
+分数线划定
+
+#include <iostream>
+#include <vector>
+#include <utility>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+    int n, num;
+    cin >> n >> num;
+    int size = num * 1.5;
+    if (size > n)
+        size = n;
+    pair<int, int> v[n];
+    for (int i = 0; i < n; i++)
+    {
+        cin >> v[i].first >> v[i].second;
+    }
+
+    sort(v, v + n, [](pair<int, int> a, pair<int, int> b)
+         {if(a.second>b.second)
+            return true;
+            else if(a.second<b.second)
+            return false;
+            else
+            return a.first<b.first;
+         });
+    
+    int count =size;
+    for (int i = size; i < n; i++)
+    {
+        if (v[i].second == v[size - 1].second)
+        {
+            count++;
+        }
+    }
+    cout<<v[size-1].second<<" "<<count<<endl;
+    for (int i = 0; i < count; i++)
+    {
+        cout << v[i].first << " " << v[i].second << endl;
     }
     
 }
-________________________________________________________________________
+
+———————————————————————————————————————————————————
+攀爬者
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+using namespace std;
+double distance(vector<int> *a, int size)
+{
+    double sum = 0;
+    for (int i = 0; i < size - 1; i++)
+    {
+        sum += sqrt(pow(a[i][0] - a[i + 1][0], 2) + pow(a[i][1] - a[i + 1][1], 2) + pow(a[i][2] - a[i + 1][2], 2));
+    }
+    return sum;
+}
+int main()
+{
+    int n;
+    cin >> n;
+    vector<int> *a = new vector<int>[n];
+    for (int i = 0; i < n; i++)
+    {
+        int x, y, z;
+        cin >> x >> y >> z;
+        a[i].push_back(x);
+        a[i].push_back(y);
+        a[i].push_back(z);
+    }
+    sort(a, a + n, [](vector<int> &a, vector<int> &b)
+         { return a[2] < b[2]; });
+    printf("%.3f", distance(a, n));
+
+    delete[] a;
+}
+_______________________________________________________
+生日
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <string>
+using namespace std;
+struct student
+{
+    string name;
+    int year;
+    int month;
+    int day;
+    int i;
+};
+int main()
+{
+    int n;
+    cin >> n;
+    student *a = new student[n];
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a[i].name >> a[i].year >> a[i].month >> a[i].day;
+        a[i].i = i;
+    }
+    sort(a, a + n, [](student a, student b)
+         { 
+             if (a.year != b.year)
+                 return a.year < b.year;
+             else if (a.month != b.month)
+                 return a.month < b.month;
+             else if(a.day != b.day)
+                 return a.day < b.day;
+            return a.i > b.i; });
+    for(int i = 0; i < n; i++)
+    {
+    cout << a[i].name <<endl;
+    }
+    delete[] a;
+}
+———————————————————————————————————————————————————
+拼数
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <string>
+using namespace std;
+
+bool cmp(string a, string b)
+{
+    return a + b > b + a;
+}
+
+int main()
+{
+    int n;
+    cin >> n;
+    vector<string> s(n);
+    for (int i = 0; i < n; i++)
+        cin >> s[i];
+    sort(s.begin(), s.end(), cmp);
+
+    string t = "";
+    for (int i = 0; i < n; i++)
+    {
+        t += s[i];
+    }
+    while(t.size() > 1)
+    {
+        if(t[0] == '0')
+        {
+            t.erase(0, 1);
+        }
+        else
+            break;
+    }
+    cout << t;
+}
+
+———————————————————————————————————————————————————
