@@ -259,3 +259,115 @@ int main()
 }
 
 ———————————————————————————————————————————————————
+
+First Step
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <string>
+using namespace std;
+bool isemptyR(vector<vector<char>> v, int i, int j, int k);
+bool isemptyC(vector<vector<char>> v, int i, int j, int k);
+int main()
+{
+    int r, c, k;
+    cin >> r >> c >> k;
+
+    vector<vector<char>> v(r, vector<char>(c));
+    for (int i = 0; i < r; i++)
+    {
+        for (int j = 0; j < c; j++)
+        {
+            cin >> v[i][j];
+        }
+    }
+
+    int count = 0;
+
+    for (int i = 0; i < r; i++)
+    {
+        for (int j = 0; j < c - k + 1; j++)
+        {
+            if (v[i][j] != '#' && isemptyR(v, i, j, k))
+            {
+                count++;
+            }
+        }
+    }
+
+    for (int i = 0; i < r - k + 1; i++)
+    {
+        for (int j = 0; j < c; j++)
+        {
+            if (v[i][j] != '#' && isemptyC(v, i, j, k))
+            {
+                count++;
+            }
+        }
+    }
+
+    cout << count;
+}
+
+bool isemptyR(vector<vector<char>> v, int i, int j, int k)
+{
+    for (int a = j; a < j + k; a++)
+    {
+        if (v[i][a] != '.')
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool isemptyC(vector<vector<char>> v, int i, int j, int k)
+{
+    if (k == 1)
+        return false;
+    for (int a = i; a < i + k; a++)
+    {
+        if (v[a][j] != '.')
+        {
+            return false;
+        }
+    }
+    return true;
+}
+_______________________________________________________
+
+火柴棒等式
+
+
+#include <iostream>
+#include <vector>
+using namespace std;
+int main()
+{
+    int num, count = 0;
+    cin >> num;
+    num -= 4;
+    vector<int> v = {6, 2, 5, 5, 4, 5, 6, 3, 7, 6};
+    for (int i = 10; i <= 10000; i++)
+    {
+        int first = i / 10;
+        int second = i % 10;
+        v.push_back(v[first] + v[second]);
+    }
+
+    for (int i = 0; i < 5000; i++)
+    {
+        for (int j = 0; j < 5000; j++)
+        {
+            if (v[i] + v[j] + v[i + j] == num)
+            {
+                count++;
+            }
+        }
+    }
+
+    cout << count;
+}
+_______________________________________________________
+

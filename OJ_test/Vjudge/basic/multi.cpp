@@ -1,12 +1,13 @@
 // https://www.luogu.com.cn/problem/P1045
 // cpp20 O2神力助我AC，不然会TLE哈哈
+// 麦森数
 #include <iostream>
 #include <string>
 #include <algorithm>
 #include <cmath>
 using namespace std;
 
-void minusNum(string &a)
+void minusNum(string &a) // 减1高精度
 {
     int carry = 1;
     for (int i = 0; i < 500 && carry; i++)
@@ -38,8 +39,8 @@ int main()
     int count = 0;
     long long times = 0;
     const int MAX_POWER = 30;
-    //在longlong的范围内，尽可能缩减循环次数，计算2的固定高次方
-    while (n >= MAX_POWER)
+    // 在longlong的范围内，尽可能缩减循环次数，计算2的固定高次方
+    while (n >= MAX_POWER) // 乘以2的30次方高精度
     {
         int carry = 0;
         for (int j = 0; j < 500; j++)
@@ -51,7 +52,7 @@ int main()
         n -= MAX_POWER;
     }
 
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++) // 乘2高精度
     {
         int carry = 0;
         for (int j = 0; j < 500; j++)
@@ -65,6 +66,7 @@ int main()
     minusNum(a);
 
     reverse(a.begin(), a.end());
+    // 反转还原后输出
     for (int i = 0; i < 10; i++)
     {
 

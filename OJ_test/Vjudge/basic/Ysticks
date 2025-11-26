@@ -1,0 +1,71 @@
+// https://www.luogu.com.cn/problem/P3799
+
+#include <iostream>
+#include <algorithm>
+#include <cmath>
+#include <map>
+
+using namespace std;
+
+long long comb(int n, int k);
+const long long MOD = 1000000007;
+int main()
+{
+    int num;
+    cin >> num;
+    map<int, int> m; // 使用map储存，只关心数字的种类和个数
+    for (int i = 0; i < num; i++)
+    {
+        int temp;
+        cin >> temp;
+        m[temp]++;
+    }
+
+    long long count = 0;
+
+    for (auto i = m.begin(); i != m.end(); i++) // 遍历寻找 两个短木棍最为加数
+    {
+        for (auto j = i; j != m.end(); j++)
+        {
+            int sum = i->first + j->first;
+
+            if (m.find(sum) != m.end()) // 找寻和是否存在map中
+            {
+                auto iter = m.find(sum);
+                if (iter->second < 2) // 当然得有2根一样大的最长木棍
+                {
+                    continue;
+                }
+                long long res = comb(iter->second, 2); // 利用组合数计算抽取木棍的种类有多少
+
+                if (i == j)
+                {
+
+                    res = (res * comb(i->second, 2)) % MOD;
+                }
+                else
+                {
+                    res = (res * i->second) % MOD;
+                    res = (res * j->second) % MOD;
+                }
+                count += res;
+            }
+        }
+    }
+
+    cout << count % (MOD);
+}
+
+long long comb(int n, int k) // 组合数计算公式
+{
+    if (k < 0 || k > n)
+        return 0;
+    if (k > n - k)
+        k = n - k;
+    long long res = 1;
+    for (int i = 1; i <= k; ++i)
+    {
+        res = res * (n - k + i) / i;
+    }
+    return res;
+}
